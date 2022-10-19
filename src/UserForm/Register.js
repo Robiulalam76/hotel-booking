@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from './UserContext';
 
 const Register = () => {
-    const { registerEmailPassword } = useContext(AuthContext)
+    const { registerEmailPassword, updateInfo } = useContext(AuthContext)
     const [passwordError, setPasswordError] = useState('')
 
 
@@ -38,7 +38,7 @@ const Register = () => {
         const confirmPassword = event.target.confirmPassword.value
 
         console.log(name, email, password, confirmPassword)
-        if (email !== confirmPassword) {
+        if (password !== confirmPassword) {
             setPasswordError('Password is Did Not Match')
             return;
         }
@@ -54,12 +54,22 @@ const Register = () => {
                 const errorMessage = error.message;
                 console.log(errorMessage);
             });
+
+        updateInfo(name)
+            .then(() => {
+                // Profile updated!
+                // ...
+            }).catch((error) => {
+                // An error occurred
+                // ...
+            });
     }
+
 
 
     return (
         <div>
-            <div className="bg-grey-lighter min-h-screen flex flex-col">
+            <div className="bg-grey-lighter min-h-screen flex flex-col mt-12">
                 <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
                     <form onSubmit={handleSubmit} className="bg-blue-50 px-6 py-8 rounded shadow-md text-black w-full">
                         <h1 className="mb-8 text-3xl text-center font-bold">Register</h1>
@@ -107,9 +117,9 @@ const Register = () => {
 
                     <div className="text-grey-dark mt-6">
                         Already have an account?
-                        <Link className="no-underline border-b border-blue text-blue" to='/login'>
+                        <Link className="no-underline border-b mx-2 border-blue text-blue-600" to='/login'>
                             Log in
-                        </Link>.
+                        </Link>
                     </div>
                 </div>
             </div>

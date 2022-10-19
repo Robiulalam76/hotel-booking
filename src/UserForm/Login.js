@@ -28,13 +28,7 @@ const Login = () => {
             <div className="bg-grey-lighter min-h-screen flex flex-col">
                 <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
                     <form onSubmit={handleSubmit} className="bg-blue-50 px-6 py-8 rounded shadow-md text-black w-full">
-                        <h1 className="mb-8 text-3xl text-center font-bold">Register</h1>
-                        <input
-                            type="text"
-                            className="block border border-grey-light w-full p-3 rounded mb-4"
-                            name="name"
-                            placeholder="Full Name" />
-
+                        <h1 className="mb-8 text-3xl text-center font-bold">Login</h1>
                         <input
                             type="email"
                             className="block border border-grey-light w-full p-3 rounded mb-4"
@@ -47,12 +41,6 @@ const Login = () => {
                             className="block border border-grey-light w-full p-3 rounded mb-4"
                             name="password"
                             placeholder="Password" />
-                        <input
-                            type="password"
-                            className="block border border-grey-light w-full p-3 rounded mb-1"
-                            name="confirmPassword"
-                            placeholder="Confirm Password" />
-
                         <button
                             type="submit"
                             className="w-full text-center py-3 rounded bg-green-600 text-white hover:bg-green-dark focus:outline-none my-1"
