@@ -1,9 +1,12 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from './UserContext';
 
 const Login = () => {
     const { logInEmailPassword } = useContext(AuthContext)
+    const location = useLocation()
+    const from = location.state?.from?.pathname || '/'
+    const navigate = useNavigate()
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -15,6 +18,7 @@ const Login = () => {
                 // login 
                 const user = userCredential.user;
                 console.log(user)
+                navigate(from, { replace: true })
             })
             .catch((error) => {
                 const errorCode = error.code;
@@ -44,7 +48,7 @@ const Login = () => {
                         <button
                             type="submit"
                             className="w-full text-center py-3 rounded bg-green-600 text-white hover:bg-green-dark focus:outline-none my-1"
-                        >Create Account</button>
+                        >Login</button>
 
                         <div className="text-center text-sm text-grey-dark mt-4">
                             By signing up, you agree to the
@@ -59,9 +63,9 @@ const Login = () => {
 
                     <div className="text-grey-dark mt-6">
                         Your are not Account?
-                        <Link className="no-underline border-b border-blue text-blue" to='/register'>
+                        <Link className="no-underline border-b border-blue mx-2 text-blue-600" to='/register'>
                             Register
-                        </Link>.
+                        </Link>
                     </div>
                 </div>
             </div>

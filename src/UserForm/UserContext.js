@@ -6,18 +6,23 @@ export const AuthContext = createContext();
 const UserContext = ({ children }) => {
     const auth = getAuth(app)
     const [user, setUser] = useState()
+    const [lodding, setLodding] = useState(true)
+
 
     const registerEmailPassword = (email, password) => {
+        setLodding(true)
         return createUserWithEmailAndPassword(auth, email, password)
     }
 
     const updateInfo = (name) => {
+        setLodding(true)
         return updateProfile(auth.currentUser, {
             displayName: name
         })
     }
 
     const logInEmailPassword = (email, password) => {
+        setLodding(true)
         return signInWithEmailAndPassword(auth, email, password)
     }
 
@@ -28,6 +33,7 @@ const UserContext = ({ children }) => {
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, (currenUser) => {
             setUser(currenUser)
+            setLodding(false)
         })
         return () => {
             unSubscribe()
@@ -35,7 +41,14 @@ const UserContext = ({ children }) => {
     }, [])
 
 
-    const userInfo = { user, registerEmailPassword, logInEmailPassword, updateInfo, logOut }
+    const userInfo = {
+        user,
+        lodding,
+        registerEmailPassword,
+        logInEmailPassword,
+        updateInfo,
+        logOut
+    }
 
     return (
         <div>

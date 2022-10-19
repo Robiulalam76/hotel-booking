@@ -14,7 +14,7 @@ const Header = () => {
                 }
             </div>
             <div className='flex md:items-center md:justify-end flex-col md:flex-row items-start text-black font-bold'>
-                <NavLink to='/home' className='flex-grow flex items-center font-bold text-2xl text-blue-600'> <img src="logo.png" className='w-10' alt="" />Hotel Booking</NavLink>
+                <NavLink to='/home' className='flex-grow flex items-center font-bold text-2xl text-blue-600'> <img src="https://cdn4.vectorstock.com/i/thumb-large/48/88/house-book-logo-icon-design-vector-22504888.jpg" className='w-10' alt="" />Hotel Booking</NavLink>
                 <div className={`flex md:items-center md:justify-end flex-col md:flex-row items-start text-black font-bold ml-10 mt-3 md:m-0 md:block duration-500 ease-in ${open ? 'block' : 'hidden'}`}>
                     <NavLink to='/home'
                         className={({ isActive }) => isActive ?
