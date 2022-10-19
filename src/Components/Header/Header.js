@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from '../../UserForm/UserContext';
 
 const Header = () => {
+    const { user } = useContext(AuthContext)
     return (
         <div>
-            <h1>this is header</h1>
+            <h1>
+                {
+                    user?.email && <p className='text-3xl text-center'>{user?.email}</p>
+                }
+            </h1>
         </div>
     );
 };
